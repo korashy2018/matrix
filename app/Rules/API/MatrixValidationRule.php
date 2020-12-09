@@ -25,14 +25,16 @@ class MatrixValidationRule implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
+        $firstMatrix = [];
         if(request()->has('first_matrix')) {
             $firstMatrix = request()->get('first_matrix');
         }
-        $firstMatrixCols = $this->countMatrixCols($firstMatrix);
-        $secondMatrixRows = $this->countMatrixRows($value);
-
+        $firstMatrixCols = count($firstMatrix[0]);
+        $secondMatrixRows = count($value);
+//        $firstMatrixCols = $this->countMatrixCols($firstMatrix);
+//        $secondMatrixRows = $this->countMatrixRows($value);
         return $firstMatrixCols === $secondMatrixRows ;
 
     }
@@ -42,26 +44,26 @@ class MatrixValidationRule implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return 'Matrices are not equal and can\'t be multiplied.';
     }
 
     /**
-     * @param $matrix
+     * @param array $matrix
      * @return int
      */
-    private function countMatrixRows($matrix) : int
+    private function countMatrixRows(array $matrix) : int
     {
-        return count($matrix);
+        return count( array ($matrix));
     }
 
     /**
-     * @param $matrix
+     * @param array $matrix
      * @return int
      */
-    private function countMatrixCols($matrix) : int
+    private function countMatrixCols( array $matrix) : int
     {
-        return $cols = count($matrix[0]);
+       return  (isset($matrix[0])) ?  count(array ($matrix[0])) :  0;
     }
 }
