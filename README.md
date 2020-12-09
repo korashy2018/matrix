@@ -1,11 +1,12 @@
 
 
-## Matrix Multiplication Task
+# Matrix Multiplication Task
 
 Multiply two matrices using API and Authorization by sanctum
 
 
-##Usage
+#Usage
+
 -localhost/matrix/public/register
 
 <p>register user to use in api calls</p> 
@@ -19,9 +20,15 @@ Multiply two matrices using API and Authorization by sanctum
 #Sample input
 
 For token generation
-insert the following two inputs
-email and password
+<p>insert the following two inputs</p>
+
+1-email 
+
+2-password
 
 for multiplication
+
 insert the following two inputs make sure both are arrays
-first_matrix and second_matrix
+
+1-first_matrix  
+2-second_matrix
