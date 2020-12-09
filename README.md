@@ -5,7 +5,8 @@
 Multiply two matrices using API and Authorization by sanctum
 
 
-#Usage
+<h3><strong>Usage</strong></h3>
+
 
 -localhost/matrix/public/register
 
@@ -17,7 +18,7 @@ Multiply two matrices using API and Authorization by sanctum
 -localhost/matrix/public/api/multiply
 <p>send post request with token in authorization header as bearer which is generated  from the previous route to get access  </p>
 
-#Sample input
+<h3><strong>Sample input</strong></h3>
 
 For token generation
 <p>insert the following two inputs</p>
