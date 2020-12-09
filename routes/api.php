@@ -19,6 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('token', 'API\AuthController@requestToken');
-Route::get('/users',function (Request $request){
-    return "test";
-})->middleware('auth:sanctum');
+Route::get('/multiply','API\MatrixOperationController@multiply')->middleware('auth:sanctum');
