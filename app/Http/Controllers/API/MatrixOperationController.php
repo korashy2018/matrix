@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\MatrixMultiplyRequest;
+use App\Matrices\NumberTOExcelColumnsConverter;
+use App\Matrices\Operations\Multiply;
 
 class MatrixOperationController extends Controller
 {
@@ -13,6 +15,13 @@ class MatrixOperationController extends Controller
      * @return array
      */
     public function multiply(MatrixMultiplyRequest $request) : array{
-        return $request->all();
+        $resultMatrixBeforeConverting = Multiply::handle($request->first_matrix,$request->second_matrix);
+         foreach($resultMatrixBeforeConverting as $sub){
+               $ExcelAlike[][] =  array_map(function ($number){
+                        return NumberTOExcelColumnsConverter::convert($number);
+                    },$sub);
+       }
+
+        return $ExcelAlike;
     }
 }
