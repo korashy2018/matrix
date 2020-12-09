@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\API;
 
+use App\Rules\API\MatrixValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MatrixMultiplyRequest extends FormRequest
@@ -23,8 +24,10 @@ class MatrixMultiplyRequest extends FormRequest
      */
     public function rules()
     {
+        $matrixEqualityRule = new MatrixValidationRule();
         return [
-            //
+            'first_matrix' => ['array','required'],
+            'second_matrix' => ['array','required',$matrixEqualityRule]
         ];
     }
 }
